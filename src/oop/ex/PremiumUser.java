@@ -27,12 +27,15 @@ public class PremiumUser implements User {
     /** מוסיפה מוצר לעגלת הקניות עם הנחה */
     @Override
     public void addProductToCart(Product product) {
-        double discountedPrice = product.getPrice() * (1 - discountRate);
-        product.price = discountedPrice; // שינוי מחיר דינמי
+        /**double discountedPrice = product.getPrice() * (1 - discountRate);
+        /**product.price = discountedPrice; // שינוי מחיר דינמי**/
         cart.add(product);
         System.out.println(product.getName() + " added to " + username + "'s cart with discount!");
     }
 
+    public double getDiscountedPrice(Product product) {
+        return product.getPrice() * (1 - discountRate);
+    }
     /** מחזירה את תוכן עגלת הקניות */
     @Override
     public List<Product> getCartContents() {
